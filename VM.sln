@@ -21,6 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FDA1645A-F7F8-484F-9054-E1F138B78228}"
 	ProjectSection(SolutionItems) = preProject
 		quick_hints.txt = quick_hints.txt
+		TextFile1.txt = TextFile1.txt
 	EndProjectSection
 EndProject
 Global
