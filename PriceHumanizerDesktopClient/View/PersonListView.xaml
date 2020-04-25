@@ -1,0 +1,22 @@
+﻿<Window x:Class="PriceHumanizerDesktopClient.View.PersonListView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PriceHumanizerDesktopClient.View"
+        xmlns:viewModels="clr-namespace:PriceHumanizerDesktopClient.ViewModel"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        Title="PersonListView" Height="650" Width="900">
+    <Window.DataContext>
+        <viewModels:PersonListViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="232*"/>
+            <ColumnDefinition Width="125*"/>
+            <ColumnDefinition Width="89*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid x:Name="datagridzik" HorizontalAlignment="Left" Height="497" Margin="10,112,0,0" VerticalAlignment="Top" Width="872" EnableRowVirtualization="True" EnableColumnVirtualization="True" MaxColumnWidth="120" Grid.ColumnSpan="3" />
+    </Grid>
+</Window>

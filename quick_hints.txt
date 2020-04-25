@@ -1,0 +1,46 @@
+###Threading - Avoiding object for 2-parameter lambda
+
+public Thread StartTheThread(SomeType param1, SomeOtherType param2) {
+  var t = new Thread(() => RealStart(param1, param2));
+  t.Start();
+  return t;
+}
+
+private static void RealStart(SomeType param1, SomeOtherType param2) 
+{
+  //do stuff
+}
+
+private void MyMethod(string param1,int param2)
+{
+  //do stuff
+}
+
+Thread myNewThread = new Thread(() => MyMethod("param1",5));
+myNewThread.Start();
+
+public ExtContentControl()
+{
+    this.CharmButtons = new ObservableCollection<object>();
+}
+ 
+[AlternateContentProperty, Category("Common Properties")]
+public ObservableCollection<object> CharmButtons
+{
+    get { return (ObservableCollection<object>)GetValue(CharmButtonsProperty); }
+    set { SetValue(CharmButtonsProperty, value); }
+}
+ 
+public static readonly DependencyProperty CharmButtonsProperty =
+    DependencyProperty.Register("CharmButtons", typeof(ObservableCollection<object>), typeof(ExtContentControl),
+    null);
+
+
+
+	            //DataContext = this;
+            //GetOutputFromInput = async (s) => { return await Task.Run<string>(() => { return s + " " + s; }); };
+            //GetOutputFromInput = getInputFromOutputDelegate;
+            //Rows = new ObservableCollection<Row>();
+            //LoadRows();
+            //Tex            
+            //Rows.CollectionChanged += RowCollectionChanged;

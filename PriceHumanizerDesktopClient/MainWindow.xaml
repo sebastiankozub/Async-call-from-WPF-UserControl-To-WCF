@@ -1,0 +1,49 @@
+﻿<Window x:Class="PriceHumanizerDesktopClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PriceHumanizerDesktopClient"
+        xmlns:views="clr-namespace:PriceHumanizerDesktopClient.View"
+        xmlns:userControls="clr-namespace:PriceHumanizerDesktopClient.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1100" Width="1000" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        x:Name="SelfMainWindow" ResizeMode="NoResize" Loaded="SelfMainWindow_Loaded" >
+
+    <Grid Margin="0,0,2,4">
+        <!--TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="72" Margin="433,162,34,161" Width="325">
+            Hello VM!
+        </-->
+        <StackPanel Orientation = "Vertical" Margin="10,10">
+            <StackPanel Orientation = "Horizontal" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="10,10,10,10" >
+                <Label  x:Name="l1" Content="{Binding Path=MainWindowSomeText, ElementName=SelfMainWindow}" HorizontalAlignment="Left" Margin="10,10,10,10" Height="25" />
+                <TextBox Name="PriceTextBox" HorizontalAlignment="Left" Height="25" Margin="10,10,10,10"  TextWrapping="Wrap" Width="120"  >
+                    8 912 345,67
+                </TextBox>
+                <Button Content="Humanize Price" HorizontalAlignment="Left" Margin="10,10,10,10"  Width="120" Click="GetPriceButton_Click" Height="25" />
+                <Label Content="{Binding Path=Content, ElementName=l1}" HorizontalAlignment="Left" Margin="10,10,10,10" Height="25" Width="148" />
+            </StackPanel>
+            
+            <userControls:TriggerListAdd x:Name="TriggerListAddControl1" Margin="10,10,10,10"   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                                         Rows="{Binding Path=MainWindowRows, ElementName=SelfMainWindow}" 
+                                         GetOutputFromInput="{Binding Path=MainWindowGetOutputFromInput, ElementName=SelfMainWindow}" 
+                                         Textable="{Binding Path=MainWindowSomeText, ElementName=SelfMainWindow}" />
+            
+            <views:PriceView x:Name="PriceViewControl1"  Margin="10,10,10,10" Height="180"  VerticalAlignment="Bottom" HorizontalAlignment="Stretch" />
+            
+            <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Stretch" Height="222" Margin="0,0,0,0" Width="384" RenderTransformOrigin="0.8,0.8">
+                <Border.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="-1"/>
+                        <SkewTransform AngleY="4" AngleX="8"/>
+                        <RotateTransform Angle="34"/>
+                        <TranslateTransform />
+                    </TransformGroup>
+                </Border.RenderTransform>
+            </Border>
+
+        </StackPanel>
+    </Grid>
+
+</Window>
