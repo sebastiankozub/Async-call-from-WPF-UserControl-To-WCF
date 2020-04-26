@@ -34,7 +34,7 @@ namespace PriceHumanizerDesktopClient
             MainWindowRows.Add(new Row(MainWindowGetOutputFromInput));
             MainWindowRows.Add(new Row(MainWindowGetOutputFromInput));
 
-            MainWindowSomeText = "Some Better Test Autoinitialisatioon";
+            MainWindowSomeText = "Some Better Test Autoinitialisation";
             //MainWindowGetOutputFromInput = async (s) => await GetHumanizePriceAsync(s);
         }
 
