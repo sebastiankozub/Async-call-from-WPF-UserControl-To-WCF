@@ -36,9 +36,9 @@ namespace PriceHumanizerDesktopClient.UserControls
 
         private async void bMain_Click(object sender, RoutedEventArgs e)
         {
+            LoadRows();
             Rows.Add(new Row(tbMain.Text, GetOutputFromInput));
             lLabel.Content = await GetOutputFromInput(tbMain.Text);
-            LoadRows();
         }
 
         private void SelfTriggerListAdd_Loaded(object sender, RoutedEventArgs e)
