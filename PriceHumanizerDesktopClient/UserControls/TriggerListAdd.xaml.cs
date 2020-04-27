@@ -34,9 +34,10 @@ namespace PriceHumanizerDesktopClient.UserControls
             Rows.Add(new Row(GetOutputFromInput));
         }
 
-        private void bMain_Click(object sender, RoutedEventArgs e)
+        private async void bMain_Click(object sender, RoutedEventArgs e)
         {
             Rows.Add(new Row(tbMain.Text, GetOutputFromInput));
+            lLabel.Content = await GetOutputFromInput(tbMain.Text);
             LoadRows();
         }
 
@@ -72,8 +73,8 @@ namespace PriceHumanizerDesktopClient.UserControls
         {
             get { return (string)GetValue(TextableProperty); }
             set { SetValue(TextableProperty, value); }
-        }      
-    }    
+        }
+    }
 
     public class Row : INotifyPropertyChanged
     {

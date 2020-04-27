@@ -21,7 +21,7 @@
                     8 912 345,67
                 </TextBox>
                 <Button Content="Humanize Price" HorizontalAlignment="Left" Margin="10,10,10,10"  Width="120" Click="GetPriceButton_Click" Height="25" />
-                <Label Content="{Binding Path=Content, ElementName=l1}" HorizontalAlignment="Left" Margin="10,10,10,10" Height="25" />
+                <Label x:Name="l2" Content="{Binding Path=Content, ElementName=l1}" HorizontalAlignment="Left" Margin="10,10,10,10" Height="25" />
             </StackPanel>
 
             <userControls:TriggerListAdd x:Name="TriggerListAddControl1" Margin="10,10,10,10"   VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
