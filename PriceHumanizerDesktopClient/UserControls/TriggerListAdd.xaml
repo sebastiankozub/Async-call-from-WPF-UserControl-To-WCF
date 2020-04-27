@@ -14,8 +14,7 @@
             <StackPanel Orientation="Horizontal" Margin="0 0 0 0" >
                 <TextBox x:Name="tbMain" Width = "100" Margin = "3 5 3 5" />
                 <Button  x:Name="bMain" Margin = "3 5 3 5" Content="Click me!" Click="bMain_Click" />
-                <Label x:Name="lLabel" Width = "100" Margin = "3 5 3 5" Content="{Binding Path=Textable, ElementName=SelfTriggerListAdd}" />
-                <Button  x:Name="bMain2" Margin = "3 5 3 5" Content="Click me!" Click="BMain2_Click" />
+                <Label   x:Name="lLabel" Width = "142" Margin = "3 5 3 5" Content="{Binding Path=Textable, ElementName=SelfTriggerListAdd}" />
                 <TextBlock x:Name="tbTxtBlock" TextWrapping="Wrap" Text="{Binding Path=lLabel, ElementName=SelfTriggerListAdd}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  />
             </StackPanel>
             <ItemsControl ItemsSource = "{Binding Path=Rows, ElementName=SelfTriggerListAdd}" >

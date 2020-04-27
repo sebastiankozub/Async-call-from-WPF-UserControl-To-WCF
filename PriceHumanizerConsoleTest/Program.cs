@@ -34,6 +34,24 @@ namespace Interviews.VM.PriceHumanizer.Client
                 Console.WriteLine("Host Exception: {0}", exc.Message);
             }
 
+            try
+            {
+                Console.WriteLine(ch.Humanize("44442 000 000,22"));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Host Exception: {0}", exc.Message);
+            }
+
+            try
+            {
+                Console.WriteLine(ch.Humanize("44442 000 000,22"));
+            }
+            catch (Exception exc)
+            {
+                Console.WriteLine("Host Exception: {0}", exc.Message);
+            }
+
             Console.ReadKey();
         }
     }

@@ -8,20 +8,14 @@ using System.Windows;
 
 namespace PriceHumanizerDesktopClient
 {
-
     public partial class MainWindow : Window
     {
-
         public MainWindow()
         {
             InitializeComponent();
-
-            //MainWindowGetOutputFromInput = async (s) => await GetHumanizePriceAsync(s);
-            //MainWindowGetOutputFromInput = async (s) => await GetHumanizePriceAsync(s);
-            //MainWindowGetOutputFromInput = async (s) => await Task.Run(() => (s + " " + s + " " + s));
         }
 
-        private void SelfMainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void LoadFewRows(object sender, RoutedEventArgs e)
         {
             MainWindowRows.Add(new Row("999 222,00", MainWindowGetOutputFromInput));
             MainWindowRows.Add(new Row("322 444 666,88", MainWindowGetOutputFromInput));
@@ -33,9 +27,6 @@ namespace PriceHumanizerDesktopClient
             MainWindowRows.Add(new Row("999 555 888", MainWindowGetOutputFromInput));
             MainWindowRows.Add(new Row(MainWindowGetOutputFromInput));
             MainWindowRows.Add(new Row(MainWindowGetOutputFromInput));
-
-            MainWindowSomeText = "Some Better Test Autoinitialisation";
-            //MainWindowGetOutputFromInput = async (s) => await GetHumanizePriceAsync(s);
         }
 
         public static DependencyProperty MainWindowGetOutputFromInputProperty =
@@ -50,7 +41,10 @@ namespace PriceHumanizerDesktopClient
         }
 
         public static DependencyProperty MainWindowSomeTextProperty =
-            DependencyProperty.Register("MainWindowSomeText", typeof(string), typeof(MainWindow));
+            DependencyProperty.Register("MainWindowSomeText", 
+                typeof(string), 
+                typeof(MainWindow),
+                new PropertyMetadata("Some Better Test Autoinitialisation"));
         public string MainWindowSomeText
         {
             get { return (string)GetValue(MainWindowSomeTextProperty); }
@@ -71,15 +65,20 @@ namespace PriceHumanizerDesktopClient
         private async void GetPriceButton_Click(object sender, RoutedEventArgs e)
         {
             try
-            {               
-                var text = (await CallHumanizePriceAsync(PriceTextBox.Text)).humanizedPrice;
-                SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
-                speechSynthesizer.Speak(text);
+            {
+                await SpeakThatLoudly();
             }
             catch(Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+        }
+
+        private async Task SpeakThatLoudly()
+        {
+            var text = (await CallHumanizePriceAsync(PriceTextBox.Text)).humanizedPrice;
+            SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
+            await Task.Run(() => speechSynthesizer.Speak(text));
         }
 
         private static async Task<string> GetHumanizePriceAsync(string price)

@@ -34,6 +34,12 @@ namespace PriceHumanizerDesktopClient.UserControls
             Rows.Add(new Row(GetOutputFromInput));
         }
 
+        private void bMain_Click(object sender, RoutedEventArgs e)
+        {
+            Rows.Add(new Row(tbMain.Text, GetOutputFromInput));
+            LoadRows();
+        }
+
         private void SelfTriggerListAdd_Loaded(object sender, RoutedEventArgs e)
         {
             LoadRows();
@@ -66,82 +72,7 @@ namespace PriceHumanizerDesktopClient.UserControls
         {
             get { return (string)GetValue(TextableProperty); }
             set { SetValue(TextableProperty, value); }
-        }
-
-        //private static void RowCollectionChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e) //RowCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        //{
-        //    //if (e.NewItems != null)
-        //    //    foreach (var item in e.NewItems)
-        //    //        ((INotifyPropertyChanged)item).PropertyChanged += RowPropertyChanged;
-        //    //if (e.OldItems != null)
-        //    //    foreach (var item in e.OldItems)
-        //    //        ((INotifyPropertyChanged)item).PropertyChanged -= RowPropertyChanged;
-        //}
-
-        //private void RowPropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
-        //    var s = sender;
-        //    var args = e;
-        //}
-
-        private void bMain_Click(object sender, RoutedEventArgs e)
-        {
-            LoadRows();
-            Rows.Add(new Row(tbMain.Text, GetOutputFromInput));
-        }
-
-        private void BMain2_Click(object sender, RoutedEventArgs e)
-        {
-            using (SpeechSynthesizer synth = new SpeechSynthesizer())
-            {
-                // Get information about supported audio formats.  
-                string AudioFormats = "";
-                foreach (SpeechAudioFormatInfo fmt in synth.Voice.SupportedAudioFormats)
-                {
-                    AudioFormats += String.Format("{0}\n",
-                    fmt.EncodingFormat.ToString());
-                }
-
-                synth.SelectVoice(synth.GetInstalledVoices().ToList().FindLast(x => x.VoiceInfo.Name == "Microsoft Paulina Desktop").VoiceInfo.Name);
-
-                // Write information about the voice to the console.  
-                tbTxtBlock.Text += " Name:          " + synth.Voice.Name + Environment.NewLine;
-                tbTxtBlock.Text += " Culture:       " + synth.Voice.Culture + Environment.NewLine;
-                tbTxtBlock.Text += " Age:           " + synth.Voice.Age + Environment.NewLine;
-                tbTxtBlock.Text += " Gender:        " + synth.Voice.Gender + Environment.NewLine;
-                tbTxtBlock.Text += " Description:   " + synth.Voice.Description + Environment.NewLine;
-                tbTxtBlock.Text += " ID:            " + synth.Voice.Id + Environment.NewLine;
-
-                if (synth.Voice.SupportedAudioFormats.Count != 0)
-                {
-                    tbTxtBlock.Text += " Audio formats: " + AudioFormats + Environment.NewLine;
-                }
-                else
-                {
-                    tbTxtBlock.Text += " No supported audio formats found" + Environment.NewLine;
-                }
-
-                // Get additional information about the voice.  
-                string AdditionalInfo = "";
-                foreach (string key in synth.Voice.AdditionalInfo.Keys)
-                {
-                    AdditionalInfo += String.Format("  {0}: {1}\n",
-                        key, synth.Voice.AdditionalInfo[key]);
-                }
-
-                tbTxtBlock.Text += " Additional Info - " + AdditionalInfo + Environment.NewLine;
-                var text = "Płynie Wisła płynie po polskiej krainie...";
-                MessageBox.Show(text);
-                synth.Speak(text);
-
-                //var tsc = new TaskCompletionSource<bool>();
-                //PromnptEvent p = (PromnptEvent)synth.SpeakAsync(text);
-                //p.ValueChanged += (o, eu) => { tsc.TrySetResult(true); };
-                ////mediaElement.Play();
-                //var b = await tsc.Task;
-                //SpeechSynthesizer speechSynthesizer = new SpeechSynthesizer();
-            }
-        }
+        }      
     }    
 
     public class Row : INotifyPropertyChanged
