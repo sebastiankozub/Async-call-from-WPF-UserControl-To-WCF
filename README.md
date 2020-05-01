@@ -7,7 +7,7 @@ Interesing functionalities:
    - non-blocking calls to SpeechSynthesizer
    - auto-updatable rows in UserControl - once initialized updates themself with WCF without use of MainWindows logic
    
-Wrong bindings
+!!! Wrong bindings - loop in row's notify property
    
    
 
